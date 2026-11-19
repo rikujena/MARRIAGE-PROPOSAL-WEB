@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>A Forever Question ✨ | Will You Marry Me?</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Great+Vibes&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            champagne: '#FDE68A',
+            amberGold: '#F59E0B',
+            softBlush: '#FFF1F2',
+            rosePink: '#FB7185',
+            peony: '#EC4899',
+            deepRose: '#F43F5E',
+            magentaDeep: '#DB2777',
+            twilight: '#8B5CF6',
+            plumDark: '#2E1065',
+            plumMid: '#4C1D95',
+            nightDusk: '#140526',
+          },
+          fontFamily: {
+            cursive: ['"Great Vibes"', '"Alex Brush"', 'cursive'],
+            serifHead: ['"Playfair Display"', 'serif'],
+            serifBody: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Canvas Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+    /* Strict viewport lock - ZERO SCROLLING ANYWHERE */
+    html, body {
+      height: 100vh;
+      height: 100dvh;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+      overflow: hidden !important;
+      position: fixed;
+      inset: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      font-family: 'Cormorant Garamond', serif;
+      background: radial-gradient(circle at 50% 15%, #4c1374 0%, #2e0854 35%, #18032d 70%, #0a0115 100%);
+      color: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Ambient Aurora Dreamscape */
+    .ambient-aurora {
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 65% 50% at 20% 25%, rgba(244, 63, 94, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 55% at 80% 75%, rgba(139, 92, 246, 0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 50% 30%, rgba(253, 230, 138, 0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 60% at 50% 90%, rgba(219, 39, 119, 0.22) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      animation: auroraBreathe 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes auroraBreathe {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.85; }
+      50% { transform: scale(1.08) translate(1.5%, -1%); opacity: 1; }
+      100% { transform: scale(1.03) translate(-1%, 1.5%); opacity: 0.9; }
+    }
+
+    /* Deluxe Glassmorphism Card with illuminated gold & rose filigree neon rim */
+    .card-glass-deluxe {
+      background: linear-gradient(135deg, rgba(38, 11, 75, 0.78) 0%, rgba(20, 4, 42, 0.88) 100%);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1.5px solid rgba(253, 230, 138, 0.45);
+      box-shadow: 
+        0 20px 50px -10px rgba(0, 0, 0, 0.75),
+        0 0 40px rgba(244, 63, 94, 0.25),
+        inset 0 1px 2px rgba(255, 255, 255, 0.35),
+        inset 0 0 20px rgba(253, 230, 138, 0.12);
+      position: relative;
+    }
+
+    .card-glass-deluxe::before {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: linear-gradient(135deg, rgba(253, 230, 138, 0.8), rgba(244, 63, 94, 0.6), rgba(139, 92, 246, 0.65), rgba(253, 230, 138, 0.3));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* Glows & Filters */
+    .glow-gold {
+      filter: drop-shadow(0 0 14px rgba(253, 230, 138, 0.8)) drop-shadow(0 0 35px rgba(245, 158, 11, 0.4));
+    }
+    .glow-rose {
+      filter: drop-shadow(0 0 16px rgba(251, 113, 133, 0.85));
+    }
+    .text-shadow-romantic {
+      text-shadow: 0 2px 20px rgba(244, 63, 94, 0.55), 0 0 35px rgba(253, 230, 138, 0.4);
+    }
+
+    /* Floating Keyframes */
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+    .animate-float {
+      animation: gentleFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes pulseHeartbeat {
+      0%, 100% { transform: scale(1); }
+      20% { transform: scale(1.12); filter: drop-shadow(0 0 28px rgba(244, 63, 94, 0.95)); }
+      40% { transform: scale(1.03); }
+      60% { transform: scale(1.15); filter: drop-shadow(0 0 32px rgba(253, 230, 138, 0.9)); }
+    }
+    .animate-pulse-heart {
+      animation: pulseHeartbeat 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Shimmer Button Effect */
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 45%;
+      height: 200%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.65) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(30deg);
+      animation: shimmerLoop 3s infinite;
+    }
+    @keyframes shimmerLoop {
+      0% { left: -70%; }
+      30%, 100% { left: 145%; }
+    }
+
+    /* Step Card Transitions */
+    .step-card {
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      transform: scale(0.95) translateY(18px);
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-card.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Floating Heart Sprites that periodically float upward */
+    .floating-heart {
+      position: absolute;
+      pointer-events: none;
+      z-index: 4;
+      animation: floatUpward linear infinite;
+      opacity: 0;
+    }
+    @keyframes floatUpward {
+      0% {
+        transform: translateY(105vh) translateX(0) scale(0.6) rotate(-15deg);
+        opacity: 0;
+      }
+      10% { opacity: 0.75; }
+      80% { opacity: 0.85; }
+      100% {
+        transform: translateY(-15vh) translateX(40px) scale(1.1) rotate(20deg);
+        opacity: 0;
+      }
+    }
+
+    /* Soundwave bars animation for audio toggle */
+    .soundwave-bar {
+      display: inline-block;
+      width: 3px;
+      height: 12px;
+      background-color: #FDE68A;
+      border-radius: 2px;
+      animation: soundwave 1s ease-in-out infinite alternate;
+    }
+    .soundwave-bar:nth-child(1) { animation-delay: 0.1s; height: 8px; }
+    .soundwave-bar:nth-child(2) { animation-delay: 0.3s; height: 14px; }
+    .soundwave-bar:nth-child(3) { animation-delay: 0.2s; height: 10px; }
+    @keyframes soundwave {
+      0% { transform: scaleY(0.4); }
+      100% { transform: scaleY(1.3); }
+    }
+
+    #petal-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body class="relative flex items-center justify-center h-screen w-screen overflow-hidden selection:bg-rosePink/40 selection:text-white">
+<!-- Ambient Light Dream Layers -->
+<div class="ambient-aurora"></div>
+<!-- Background Particle & Flying Petals Canvas -->
+<canvas id="petal-canvas"></canvas>
+<!-- Ambient Floating Heart Sprites Container -->
+<div class="fixed inset-0 pointer-events-none z-10 overflow-hidden" id="hearts-container"></div>
+<!-- Luxury Sound Toggle in Header -->
+<div class="fixed top-3 right-3 sm:top-5 sm:right-6 z-50 flex items-center">
+<button class="card-glass-deluxe px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-sans tracking-wide text-softBlush flex items-center gap-2 hover:border-champagne hover:scale-105 active:scale-95 transition-all shadow-xl group border border-champagne/40" id="music-toggle">
+<div class="flex items-center gap-0.5 h-3" id="soundwave-container">
+<span class="soundwave-bar"></span>
+<span class="soundwave-bar"></span>
+<span class="soundwave-bar"></span>
+</div>
+<i class="w-3.5 h-3.5 text-rosePink hidden" data-lucide="volume-x" id="music-muted-icon"></i>
+<span class="text-champagne font-medium text-xs" id="music-text">Melody: On</span>
+</button>
+</div>
+<!-- Top-Left Elegant Botanical Flourish SVG -->
+<div class="fixed top-0 left-0 p-3 sm:p-6 pointer-events-none z-10 opacity-70 hidden sm:block">
+<svg class="animate-float" fill="none" height="110" viewbox="0 0 140 140" width="110">
+<path d="M12 12 C 45 10, 80 35, 85 70 C 88 95, 105 115, 130 120" stroke="url(#goldVine1)" stroke-linecap="round" stroke-width="1.8"></path>
+<path d="M12 12 C 10 45, 35 80, 70 85 C 95 88, 115 105, 120 130" stroke="url(#goldVine1)" stroke-linecap="round" stroke-width="1.8"></path>
+<circle cx="85" cy="70" fill="#FB7185" fill-opacity="0.8" r="6"></circle>
+<circle cx="70" cy="85" fill="#F43F5E" fill-opacity="0.8" r="6"></circle>
+<circle cx="130" cy="120" fill="#FDE68A" fill-opacity="0.9" r="4"></circle>
+<defs>
+<lineargradient id="goldVine1" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FDE68A"></stop>
+<stop offset="50%" stop-color="#F59E0B"></stop>
+<stop offset="100%" stop-color="#FB7185"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<!-- Bottom-Right Botanical Flourish SVG -->
+<div class="fixed bottom-0 right-0 p-3 sm:p-6 pointer-events-none z-10 opacity-70 hidden sm:block transform rotate-180">
+<svg class="animate-float" fill="none" height="110" style="animation-delay: -3s;" viewbox="0 0 140 140" width="110">
+<path d="M12 12 C 45 10, 80 35, 85 70 C 88 95, 105 115, 130 120" stroke="url(#goldVine2)" stroke-linecap="round" stroke-width="1.8"></path>
+<circle cx="85" cy="70" fill="#F43F5E" fill-opacity="0.85" r="5"></circle>
+<circle cx="70" cy="85" fill="#FB7185" fill-opacity="0.85" r="5"></circle>
+<defs>
+<lineargradient id="goldVine2" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FDE68A"></stop>
+<stop offset="100%" stop-color="#FB7185"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<!-- ================= MAIN FIXED STAGE (100% NO SCROLL) ================= -->
+<main class="relative z-20 w-full h-full max-h-screen flex items-center justify-center p-3 sm:p-6 overflow-hidden">
+<!-- ================= STEP 1: The Invitation ================= -->
+<div class="step-card active w-full max-w-xl" id="step-1">
+<div class="card-glass-deluxe rounded-3xl p-6 sm:p-10 w-full text-center relative overflow-hidden flex flex-col items-center justify-between">
+<!-- Glowing Floating Heart Envelope / Seal -->
+<div class="mb-4 sm:mb-5 relative flex justify-center">
+<div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-rosePink/30 via-plumMid/40 to-champagne/25 flex items-center justify-center animate-pulse-heart border-2 border-champagne/60 shadow-[0_0_35px_rgba(251,113,133,0.5)]">
+<svg class="w-10 h-10 sm:w-12 sm:h-12 text-rosePink glow-rose" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+</svg>
+</div>
+<span class="absolute -top-1 -right-2 text-champagne text-xs animate-ping">✨</span>
+<span class="absolute -bottom-1 -left-2 text-rosePink text-sm animate-bounce">🌸</span>
+</div>
+<div class="flex items-center justify-center gap-2 mb-1 text-champagne/80 font-cursive text-xl">
+<span>✧</span>
+<span class="tracking-widest uppercase text-[10px] sm:text-xs font-sans font-medium text-champagne">A Token Of My Heart</span>
+<span>✧</span>
+</div>
+<h1 class="font-cursive text-4xl sm:text-6xl text-champagne tracking-wide mb-3 glow-gold text-shadow-romantic">
+          For My Dearest
+        </h1>
+<p class="font-serifBody text-xl sm:text-2xl text-softBlush/95 leading-relaxed max-w-md mx-auto mb-6 sm:mb-8 font-normal italic">
+          “I have a little secret I’ve been waiting to share with you...”
+        </p>
+<!-- Tap to Open Button -->
+<button class="btn-shimmer group relative inline-flex items-center gap-3 px-8 py-3.5 sm:px-10 sm:py-4 rounded-full bg-gradient-to-r from-rosePink via-magentaDeep to-twilight text-white font-serifHead font-semibold text-lg sm:text-xl tracking-wider shadow-[0_0_35px_rgba(244,63,94,0.5)] hover:shadow-[0_0_45px_rgba(253,230,138,0.7)] hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-white/50" id="btn-step-1">
+<span>Tap to Open</span>
+<i class="w-5 h-5 text-champagne group-hover:rotate-45 transition-transform duration-500" data-lucide="sparkles"></i>
+</button>
+<div class="mt-5 flex items-center justify-center gap-2 text-[10px] sm:text-xs font-sans tracking-widest text-champagne/60 uppercase">
+<span>❧</span>
+<span>Made with all my love</span>
+<span>☙</span>
+</div>
+</div>
+</div>
+<!-- ================= CHAPTER 1 OF 5 ================= -->
+<div class="step-card w-full max-w-xl" id="step-c1">
+<div class="card-glass-deluxe rounded-3xl p-6 sm:p-9 w-full text-center relative overflow-hidden flex flex-col justify-between">
+<!-- Chapter Indicator & Stepper Dots -->
+<div class="mb-4">
+<div class="flex items-center justify-center gap-1.5 mb-2">
+<span class="w-6 h-1.5 rounded-full bg-champagne shadow-[0_0_8px_#FDE68A]"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+</div>
+<span class="text-[11px] font-sans uppercase tracking-widest text-champagne/90">Chapter 1 of 5 · The Beginning</span>
+<h2 class="font-cursive text-3xl sm:text-4xl text-champagne glow-gold mt-1">My Beautiful Girl</h2>
+</div>
+<!-- Bite-sized exact verbatim text: Chapter 1 -->
+<div class="bg-black/30 backdrop-blur-md rounded-2xl p-5 sm:p-7 border border-champagne/25 text-left shadow-inner mb-6">
+<div class="font-serifBody text-lg sm:text-xl text-rose-50/95 leading-relaxed space-y-4">
+<p>
+              From the very first day we met, there is one thing I still cannot forget — your smile.
+            </p>
+<p class="text-champagne font-medium text-xl sm:text-2xl italic pl-3 border-l-2 border-rosePink/70">
+              I did not know that smile would one day become one of my favorite things in this entire world.
+            </p>
+<p>
+              You made my life beautiful in ways you probably do not even realize.
+            </p>
+</div>
+</div>
+<!-- Next Button -->
+<div class="flex justify-center">
+<button class="btn-shimmer group relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-rosePink via-magentaDeep to-twilight text-white font-serifHead font-semibold text-lg tracking-wider shadow-[0_0_30px_rgba(244,63,94,0.4)] hover:scale-105 active:scale-95 transition-all border-2 border-white/40" id="btn-c1">
+<span>Turn Page</span>
+<span class="text-champagne text-lg group-hover:scale-125 transition-transform">🌸</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= CHAPTER 2 OF 5 ================= -->
+<div class="step-card w-full max-w-xl" id="step-c2">
+<div class="card-glass-deluxe rounded-3xl p-6 sm:p-9 w-full text-center relative overflow-hidden flex flex-col justify-between">
+<!-- Chapter Indicator & Stepper Dots -->
+<div class="mb-4">
+<div class="flex items-center justify-center gap-1.5 mb-2">
+<span class="w-2 h-1.5 rounded-full bg-champagne/60"></span>
+<span class="w-6 h-1.5 rounded-full bg-champagne shadow-[0_0_8px_#FDE68A]"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+</div>
+<span class="text-[11px] font-sans uppercase tracking-widest text-champagne/90">Chapter 2 of 5 · Precious Memories</span>
+<h2 class="font-cursive text-3xl sm:text-4xl text-champagne glow-gold mt-1">The Little Things</h2>
+</div>
+<!-- Bite-sized exact verbatim text: Chapter 2 -->
+<div class="bg-black/30 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-champagne/25 text-left shadow-inner mb-5">
+<div class="font-serifBody text-base sm:text-lg text-rose-50/95 leading-relaxed space-y-3">
+<p>
+              I remember the little things — your laugh, the way you smile, our random conversations, those late-night talks when we had no idea how time was passing, those unexpected meetings that somehow became some of my favorite memories. Even the smallest moments with you became something I wanted to keep forever.
+            </p>
+<p class="text-rose-100">
+              And yes… we have had our fights. We have misunderstood each other, said things we did not mean, gotten angry, and had moments when loving each other felt a little difficult.
+            </p>
+<p class="text-champagne font-medium italic pl-3 border-l-2 border-rosePink/70">
+              And yes… we've had our little fights, misunderstandings, and dramatic moments too. Sometimes we drive each other crazy, but honestly, my heart has a funny habit. It saves all the beautiful memories and quietly deletes the bad ones.
+            </p>
+</div>
+</div>
+<!-- Next Button -->
+<div class="flex justify-center">
+<button class="btn-shimmer group relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-rosePink via-magentaDeep to-twilight text-white font-serifHead font-semibold text-lg tracking-wider shadow-[0_0_30px_rgba(244,63,94,0.4)] hover:scale-105 active:scale-95 transition-all border-2 border-white/40" id="btn-c2">
+<span>Next Memory</span>
+<span class="text-champagne text-lg group-hover:scale-125 transition-transform">✨</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= CHAPTER 3 OF 5 ================= -->
+<div class="step-card w-full max-w-xl" id="step-c3">
+<div class="card-glass-deluxe rounded-3xl p-6 sm:p-9 w-full text-center relative overflow-hidden flex flex-col justify-between">
+<!-- Chapter Indicator & Stepper Dots -->
+<div class="mb-4">
+<div class="flex items-center justify-center gap-1.5 mb-2">
+<span class="w-2 h-1.5 rounded-full bg-champagne/60"></span>
+<span class="w-2 h-1.5 rounded-full bg-champagne/60"></span>
+<span class="w-6 h-1.5 rounded-full bg-champagne shadow-[0_0_8px_#FDE68A]"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+</div>
+<span class="text-[11px] font-sans uppercase tracking-widest text-champagne/90">Chapter 3 of 5 · My Unwavering Heart</span>
+<h2 class="font-cursive text-3xl sm:text-4xl text-champagne glow-gold mt-1">I Choose You</h2>
+</div>
+<!-- Bite-sized exact verbatim text: Chapter 3 -->
+<div class="bg-black/30 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-champagne/25 text-left shadow-inner mb-5">
+<div class="font-serifBody text-base sm:text-lg text-rose-50/95 leading-relaxed space-y-3">
+<p>
+              Because whenever I look back at our journey, I don't see the fights first. I see you — the girl who made me smile when I did not feel like smiling. The girl who became my comfort without even trying. The girl whose presence can make an ordinary day feel special. The girl I can talk to about absolutely nothing and still never get bored.
+            </p>
+<p class="text-softBlush font-normal">
+              And through all of it, there has always been one thing that never changed.
+            </p>
+<div class="border-l-2 border-champagne pl-3 py-0.5 space-y-1">
+<p class="text-rosePink font-bold text-xl sm:text-2xl font-serifHead">
+                I choose you.
+              </p>
+<p class="text-champagne/90 italic text-sm sm:text-base leading-snug">
+                I choose you on the good days. I choose you on the difficult days. I choose you when we are laughing until we cannot breathe. I choose you when we are angry and do not want to talk. I choose you when everything feels perfect, and I choose you even when everything feels messy.
+              </p>
+</div>
+</div>
+</div>
+<!-- Next Button -->
+<div class="flex justify-center">
+<button class="btn-shimmer group relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-rosePink via-magentaDeep to-twilight text-white font-serifHead font-semibold text-lg tracking-wider shadow-[0_0_30px_rgba(244,63,94,0.4)] hover:scale-105 active:scale-95 transition-all border-2 border-white/40" id="btn-c3">
+<span>Turn Page</span>
+<span class="text-champagne text-lg group-hover:scale-125 transition-transform">💖</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= CHAPTER 4 OF 5 ================= -->
+<div class="step-card w-full max-w-xl" id="step-c4">
+<div class="card-glass-deluxe rounded-3xl p-6 sm:p-9 w-full text-center relative overflow-hidden flex flex-col justify-between">
+<!-- Chapter Indicator & Stepper Dots -->
+<div class="mb-4">
+<div class="flex items-center justify-center gap-1.5 mb-2">
+<span class="w-2 h-1.5 rounded-full bg-champagne/60"></span>
+<span class="w-2 h-1.5 rounded-full bg-champagne/60"></span>
+<span class="w-2 h-1.5 rounded-full bg-champagne/60"></span>
+<span class="w-6 h-1.5 rounded-full bg-champagne shadow-[0_0_8px_#FDE68A]"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+</div>
+<span class="text-[11px] font-sans uppercase tracking-widest text-champagne/90">Chapter 4 of 5 · Forever Gratitude</span>
+<h2 class="font-cursive text-3xl sm:text-4xl text-champagne glow-gold mt-1">What You Mean To Me</h2>
+</div>
+<!-- Bite-sized exact verbatim text: Chapter 4 -->
+<div class="bg-black/30 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-champagne/25 text-left shadow-inner mb-5">
+<div class="font-serifBody text-base sm:text-lg text-rose-50/95 leading-relaxed space-y-3">
+<p class="text-champagne/95 italic">
+              Because loving you was never just about the easy moments. It is about knowing that no matter how many times life changes, my heart will still find its way back to you.
+            </p>
+<p>
+              Thank you for every moment you have given me. Thank you for every smile you brought into my life. Thank you for every conversation, every memory, every hug, every little effort, and every time you simply stayed.
+            </p>
+<p class="text-softBlush font-normal">
+              You may never fully understand how much you mean to me. You are not just someone I love.
+            </p>
+<p class="text-champagne font-medium italic pl-3 border-l-2 border-rosePink/70">
+              You are someone I want to build memories with. Someone I want to grow with. Someone I want to annoy for the rest of my life. Someone I want beside me when life is beautiful, and when life is difficult.
+            </p>
+</div>
+</div>
+<!-- Next Button -->
+<div class="flex justify-center">
+<button class="btn-shimmer group relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-rosePink via-magentaDeep to-twilight text-white font-serifHead font-semibold text-lg tracking-wider shadow-[0_0_30px_rgba(244,63,94,0.4)] hover:scale-105 active:scale-95 transition-all border-2 border-white/40" id="btn-c4">
+<span>Read to the End</span>
+<span class="text-champagne text-lg group-hover:scale-125 transition-transform">🌹</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= CHAPTER 5 OF 5 ================= -->
+<div class="step-card w-full max-w-xl" id="step-c5">
+<div class="card-glass-deluxe rounded-3xl p-6 sm:p-9 w-full text-center relative overflow-hidden flex flex-col justify-between">
+<!-- Chapter Indicator & Stepper Dots -->
+<div class="mb-4">
+<div class="flex items-center justify-center gap-1.5 mb-2">
+<span class="w-2 h-1.5 rounded-full bg-champagne/60"></span>
+<span class="w-2 h-1.5 rounded-full bg-champagne/60"></span>
+<span class="w-2 h-1.5 rounded-full bg-champagne/60"></span>
+<span class="w-2 h-1.5 rounded-full bg-champagne/60"></span>
+<span class="w-6 h-1.5 rounded-full bg-champagne shadow-[0_0_8px_#FDE68A]"></span>
+</div>
+<span class="text-[11px] font-sans uppercase tracking-widest text-champagne/90">Chapter 5 of 5 · A Vow For Eternity</span>
+<h2 class="font-cursive text-3xl sm:text-4xl text-champagne glow-gold mt-1">Until My Very Last Breath</h2>
+</div>
+<!-- Bite-sized exact verbatim text: Chapter 5 -->
+<div class="bg-black/30 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-champagne/25 text-left shadow-inner mb-5">
+<div class="font-serifBody text-base sm:text-lg text-rose-50/95 leading-relaxed space-y-2">
+<p class="italic text-champagne/90">
+              And if life gave me the chance to go back and live everything again from the beginning, I would still choose the same path.
+            </p>
+<div class="space-y-0.5 text-softBlush pl-2">
+<p>I would still look for that smile.</p>
+<p>I would still want to meet you.</p>
+<p>I would still fall for you.</p>
+</div>
+<p class="text-champagne font-bold text-xl sm:text-2xl font-serifHead pt-1 border-t border-champagne/20">
+              And I would still choose you… today, tomorrow, every day after that, and until my very last breath.
+            </p>
+<p class="text-rosePink font-semibold text-lg sm:text-xl font-serifHead pt-1">
+              I love you, my beautiful girl. ❤️ <span class="block text-sm sm:text-base text-rose-100 font-serifBody font-normal italic">And no matter how many words I write, they will never be enough to explain what you mean to me.</span>
+</p>
+</div>
+</div>
+<!-- Continue to Step 3: Why I Love You -->
+<div class="flex justify-center">
+<button class="btn-shimmer group relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-rosePink via-magentaDeep to-twilight text-white font-serifHead font-semibold text-lg tracking-wider shadow-[0_0_35px_rgba(244,63,94,0.45)] hover:scale-105 active:scale-95 transition-all border-2 border-white/40" id="btn-c5">
+<span>Continue to Our Next Chapter</span>
+<span class="text-champagne text-lg group-hover:scale-125 transition-transform">✨</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= STEP 3: Why I Love You (Interactive Blooming Flowers) ================= -->
+<div class="step-card w-full max-w-2xl" id="step-3">
+<div class="card-glass-deluxe rounded-3xl p-6 sm:p-9 w-full text-center relative overflow-hidden flex flex-col justify-between">
+<div class="mb-3">
+<div class="flex items-center justify-center space-x-2 text-champagne text-xs uppercase tracking-widest font-sans mb-1">
+<span>🌸</span> Blossoms of My Heart <span>🌸</span>
+</div>
+<h2 class="font-cursive text-4xl sm:text-5xl text-champagne glow-gold">A Few Reasons Why...</h2>
+<p class="font-serifBody text-base sm:text-lg text-softBlush/90 italic">
+            Tap each delicate blossom to reveal a truth kept close to my heart:
+          </p>
+</div>
+<!-- 3 Interactive Blooming Flower Cards - Compact for 100vh fit -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-5">
+<!-- Reason 1 -->
+<div class="reason-card group cursor-pointer" data-id="1">
+<div class="reason-box h-36 sm:h-44 rounded-2xl bg-white/5 border border-champagne/30 hover:border-rosePink/80 p-3 sm:p-4 flex flex-col items-center justify-center transition-all duration-400 relative overflow-hidden group-hover:bg-white/10 group-hover:shadow-[0_0_20px_rgba(251,113,133,0.3)]">
+<div class="flower-icon w-11 h-11 rounded-full bg-rosePink/20 border border-rosePink/40 flex items-center justify-center text-rosePink mb-2 transition-transform duration-400 group-hover:scale-110">
+<i class="w-5 h-5 text-champagne" data-lucide="sparkles"></i>
+</div>
+<span class="reason-prompt text-[11px] font-sans font-semibold uppercase tracking-wider text-champagne/80 group-hover:text-champagne flex items-center gap-1">
+<span>Tap to Bloom</span>
+<i class="w-2.5 h-2.5 text-rosePink" data-lucide="heart"></i>
+</span>
+<div class="reason-text hidden text-center px-1">
+<span class="font-serifHead text-sm sm:text-base text-champagne font-bold block mb-1">Your Beauty &amp; Kindness</span>
+<p class="font-serifBody text-xs sm:text-sm text-rose-100 leading-snug italic">
+                  “A radiant grace that lights up every room, paired with the gentlest soul I've ever known.”
+                </p>
+</div>
+</div>
+</div>
+<!-- Reason 2 -->
+<div class="reason-card group cursor-pointer" data-id="2">
+<div class="reason-box h-36 sm:h-44 rounded-2xl bg-white/5 border border-champagne/30 hover:border-rosePink/80 p-3 sm:p-4 flex flex-col items-center justify-center transition-all duration-400 relative overflow-hidden group-hover:bg-white/10 group-hover:shadow-[0_0_20px_rgba(251,113,133,0.3)]">
+<div class="flower-icon w-11 h-11 rounded-full bg-twilight/30 border border-twilight/40 flex items-center justify-center text-champagne mb-2 transition-transform duration-400 group-hover:scale-110">
+<i class="w-5 h-5 text-champagne" data-lucide="sun"></i>
+</div>
+<span class="reason-prompt text-[11px] font-sans font-semibold uppercase tracking-wider text-champagne/80 group-hover:text-champagne flex items-center gap-1">
+<span>Tap to Bloom</span>
+<i class="w-2.5 h-2.5 text-rosePink" data-lucide="heart"></i>
+</span>
+<div class="reason-text hidden text-center px-1">
+<span class="font-serifHead text-sm sm:text-base text-champagne font-bold block mb-1">Your Laugh</span>
+<p class="font-serifBody text-xs sm:text-sm text-rose-100 leading-snug italic">
+                  “The purest, most infectious melody in the world. Just one giggle from you erases all the weight of any day.”
+                </p>
+</div>
+</div>
+</div>
+<!-- Reason 3 -->
+<div class="reason-card group cursor-pointer" data-id="3">
+<div class="reason-box h-36 sm:h-44 rounded-2xl bg-white/5 border border-champagne/30 hover:border-rosePink/80 p-3 sm:p-4 flex flex-col items-center justify-center transition-all duration-400 relative overflow-hidden group-hover:bg-white/10 group-hover:shadow-[0_0_20px_rgba(251,113,133,0.3)]">
+<div class="flower-icon w-11 h-11 rounded-full bg-rosePink/20 border border-rosePink/40 flex items-center justify-center text-rosePink mb-2 transition-transform duration-400 group-hover:scale-110">
+<i class="w-5 h-5 text-rosePink" data-lucide="home"></i>
+</div>
+<span class="reason-prompt text-[11px] font-sans font-semibold uppercase tracking-wider text-champagne/80 group-hover:text-champagne flex items-center gap-1">
+<span>Tap to Bloom</span>
+<i class="w-2.5 h-2.5 text-rosePink" data-lucide="heart"></i>
+</span>
+<div class="reason-text hidden text-center px-1">
+<span class="font-serifHead text-sm sm:text-base text-champagne font-bold block mb-1">My True Home</span>
+<p class="font-serifBody text-xs sm:text-sm text-rose-100 leading-snug italic">
+                  “Whenever I hold your hand or rest in your arms, the world falls quiet and I know exactly where I belong.”
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Unlock Indicator / Proceed Button -->
+<div class="flex justify-center">
+<button class="btn-shimmer group relative inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white/10 text-white/40 font-serifHead font-semibold text-base sm:text-lg tracking-wider cursor-not-allowed transition-all duration-400 border border-white/15 shadow-lg" disabled="" id="btn-step-3">
+<span id="btn-step-3-text">Bloom all 3 to continue (0/3)</span>
+<i class="w-4 h-4" data-lucide="lock" id="btn-step-3-icon"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= STEP 4: The Proposal ("Will You Marry Me?") ================= -->
+<div class="step-card w-full max-w-xl" id="step-4">
+<div class="card-glass-deluxe rounded-3xl p-6 sm:p-10 w-full text-center relative overflow-hidden border-2 border-champagne shadow-[0_0_80px_rgba(244,63,94,0.5)] flex flex-col justify-between">
+<!-- Radiant Diamond Ring Crest -->
+<div class="mb-3 sm:mb-4 flex justify-center">
+<div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full border-3 border-champagne flex items-center justify-center glow-gold bg-gradient-to-tr from-amberGold/30 via-rosePink/25 to-champagne/20 shadow-[0_0_35px_rgba(253,230,138,0.7)] animate-pulse-heart">
+<div class="w-7 h-7 sm:w-8 sm:h-8 bg-white rotate-45 border-2 border-champagne shadow-[0_0_25px_#fff]"></div>
+<span class="absolute -top-1 -right-1 text-champagne text-lg animate-ping">✨</span>
+<span class="absolute -bottom-1 -left-1 text-rosePink text-lg animate-bounce">💍</span>
+</div>
+</div>
+<div class="text-[11px] uppercase font-sans tracking-widest text-champagne mb-1">My Entire Heart Wants To Ask You</div>
+<h1 class="font-cursive text-5xl sm:text-7xl text-champagne mb-2 tracking-wide glow-gold text-shadow-romantic">
+          Will You Marry Me?
+        </h1>
+<p class="font-serifBody text-lg sm:text-2xl text-softBlush/95 leading-relaxed font-normal italic mb-6 max-w-md mx-auto">
+          “You are my best friend, my soulmate, and my forever. Walk with me through all of life’s tomorrows.”
+        </p>
+<!-- Interactive YES / NO Buttons Area -->
+<div class="relative min-h-[90px] flex items-center justify-center gap-5 sm:gap-8">
+<!-- Radiant YES Button -->
+<button class="btn-shimmer relative z-20 inline-flex items-center gap-2.5 px-9 py-3.5 sm:px-11 sm:py-4 rounded-full bg-gradient-to-r from-champagne via-rosePink to-twilight text-slate-950 font-serifHead font-extrabold text-2xl sm:text-3xl tracking-wide shadow-[0_0_40px_rgba(253,230,138,0.85)] hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white" id="btn-yes">
+<span class="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">YES! 💍</span>
+<span class="text-champagne animate-pulse">✨</span>
+</button>
+<!-- Playful Dodging NO Button -->
+<button class="relative z-10 inline-flex items-center px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white/75 font-serifHead text-base transition-all duration-200 border border-white/25" id="btn-no">
+<span id="no-text">No</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= STEP 5: The Grand Celebration Finale ================= -->
+<div class="step-card w-full max-w-xl" id="step-5">
+<div class="card-glass-deluxe rounded-3xl p-6 sm:p-10 w-full text-center relative overflow-hidden border-2 border-champagne shadow-[0_0_90px_rgba(253,230,138,0.6)] flex flex-col justify-between">
+<div class="w-18 h-18 sm:w-20 sm:h-20 mx-auto mb-3 rounded-full bg-gradient-to-tr from-champagne via-rosePink to-magentaDeep flex items-center justify-center text-3xl sm:text-4xl animate-bounce shadow-[0_0_35px_rgba(251,113,133,0.7)] border-2 border-white/70">
+          💍
+        </div>
+<div class="text-[11px] uppercase font-sans tracking-widest text-champagne mb-1">Our New Chapter Begins</div>
+<h1 class="font-cursive text-5xl sm:text-7xl text-champagne mb-1 glow-gold text-shadow-romantic">
+          She Said Yes!
+        </h1>
+<h2 class="font-serifHead text-2xl sm:text-3xl text-white font-medium mb-3">
+          Forever Starts Today.
+        </h2>
+<p class="font-serifBody text-lg sm:text-xl text-softBlush/95 max-w-md mx-auto italic font-normal leading-relaxed mb-6">
+          “I love you endlessly, in this lifetime and every one after. Thank you for making me the happiest person in the universe.”
+        </p>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+<button class="btn-shimmer px-7 py-3 rounded-full bg-gradient-to-r from-rosePink via-magentaDeep to-twilight text-white font-serifHead text-base tracking-wider shadow-lg hover:scale-105 active:scale-95 transition-transform flex items-center gap-2 border-2 border-white/40" onclick="triggerSuperCelebration()">
+<i class="w-4 h-4 text-champagne" data-lucide="sparkles"></i>
+<span>Celebrate Again!</span>
+</button>
+<button class="px-7 py-3 rounded-full bg-white/10 hover:bg-white/20 text-softBlush font-serifHead text-base tracking-wider transition-colors flex items-center gap-2 border border-champagne/30" onclick="takeScreenshotHelp()">
+<i class="w-4 h-4 text-rosePink" data-lucide="camera"></i>
+<span>Save This Moment</span>
+</button>
+</div>
+<div class="hidden mt-4 text-xs text-champagne font-sans bg-white/5 py-1.5 px-3 rounded-full border border-champagne/20 max-w-xs mx-auto" id="save-hint">
+          📸 Take a screenshot or screen recording to keep this magic forever! 💖
+        </div>
+</div>
+</div>
+</main>
+<script>
+    lucide.createIcons();
+
+    // Navigation Step System
+    let currentStep = '1';
+    const unlockedReasons = new Set();
+    let noHoverCount = 0;
+
+    function goToStep(stepId) {
+      const prevEl = document.getElementById(`step-${currentStep}`);
+      const nextEl = document.getElementById(`step-${stepId}`);
+
+      if (prevEl) prevEl.classList.remove('active');
+      setTimeout(() => {
+        if (nextEl) {
+          nextEl.classList.add('active');
+          currentStep = stepId;
+          lucide.createIcons();
+
+          if (stepId === '4') {
+            document.body.style.background = 'radial-gradient(circle at 50% 20%, #4a044e 0%, #2e0854 40%, #150228 80%, #070012 100%)';
+            burstConfetti({
+              particleCount: 50,
+              spread: 70,
+              origin: { y: 0.6 },
+              colors: ['#FDE68A', '#FB7185', '#F43F5E', '#FFFFFF']
+            });
+          }
+          if (stepId === '5') {
+            triggerSuperCelebration();
+          }
+        }
+      }, 300);
+    }
+
+    // Step 1: Open invitation
+    document.getElementById('btn-step-1').addEventListener('click', (e) => {
+      startMelodyIfPending();
+      playHarpArpeggio([523.25, 659.25, 783.99, 1046.5]);
+      burstConfetti({
+        particleCount: 50,
+        spread: 80,
+        colors: ['#FDE68A', '#FB7185', '#FFF1F2', '#EC4899', '#FFFFFF'],
+        origin: { y: 0.6 }
+      });
+      goToStep('c1');
+    });
+
+    // Chapter Navigation
+    document.getElementById('btn-c1').addEventListener('click', () => {
+      playHarpArpeggio([587.33, 739.99, 880, 1174.66]);
+      goToStep('c2');
+    });
+
+    document.getElementById('btn-c2').addEventListener('click', () => {
+      playHarpArpeggio([659.25, 830.61, 987.77, 1318.51]);
+      goToStep('c3');
+    });
+
+    document.getElementById('btn-c3').addEventListener('click', () => {
+      playHarpArpeggio([698.46, 880, 1046.5, 1396.91]);
+      goToStep('c4');
+    });
+
+    document.getElementById('btn-c4').addEventListener('click', () => {
+      playHarpArpeggio([783.99, 987.77, 1174.66, 1567.98]);
+      goToStep('c5');
+    });
+
+    document.getElementById('btn-c5').addEventListener('click', () => {
+      playHarpArpeggio([880, 1108.73, 1318.51, 1760]);
+      goToStep('3');
+    });
+
+    // Step 3: Blossoms reveal
+    document.querySelectorAll('.reason-card').forEach(card => {
+      card.addEventListener('click', function() {
+        startMelodyIfPending();
+        const id = this.getAttribute('data-id');
+        const box = this.querySelector('.reason-box');
+        const prompt = this.querySelector('.reason-prompt');
+        const text = this.querySelector('.reason-text');
+        const icon = this.querySelector('.flower-icon');
+
+        if (!unlockedReasons.has(id)) {
+          unlockedReasons.add(id);
+          box.classList.add('bg-white/15', 'border-champagne', 'shadow-[0_0_25px_rgba(253,230,138,0.4)]');
+          prompt.classList.add('hidden');
+          text.classList.remove('hidden');
+          icon.innerHTML = `<span class="text-2xl animate-spin" style="animation-duration: 4s;">🌸</span>`;
+          
+          playHarpArpeggio([523.25 + (unlockedReasons.size * 100), 659.25 + (unlockedReasons.size * 100)]);
+
+          const rect = this.getBoundingClientRect();
+          confetti({
+            particleCount: 20,
+            spread: 45,
+            origin: {
+              x: (rect.left + rect.width / 2) / window.innerWidth,
+              y: (rect.top + rect.height / 2) / window.innerHeight
+            },
+            colors: ['#FDE68A', '#FB7185', '#FFF1F2', '#DB2777']
+          });
+
+          const btn3 = document.getElementById('btn-step-3');
+          const btn3Text = document.getElementById('btn-step-3-text');
+          const btn3Icon = document.getElementById('btn-step-3-icon');
+
+          if (unlockedReasons.size === 3) {
+            btn3.removeAttribute('disabled');
+            btn3.classList.remove('bg-white/10', 'text-white/40', 'cursor-not-allowed', 'border-white/15');
+            btn3.classList.add('bg-gradient-to-r', 'from-rosePink', 'via-magentaDeep', 'to-champagne', 'text-white', 'shadow-[0_0_35px_rgba(253,230,138,0.6)]', 'hover:scale-105', 'active:scale-95', 'border-2', 'border-white/40');
+            btn3Text.textContent = "One Last Thing... 💍";
+            btn3Icon.outerHTML = `<i data-lucide="arrow-right" class="w-5 h-5 text-champagne animate-pulse"></i>`;
+            lucide.createIcons();
+          } else {
+            btn3Text.textContent = `Bloom all 3 to continue (${unlockedReasons.size}/3)`;
+          }
+        }
+      });
+    });
+
+    document.getElementById('btn-step-3').addEventListener('click', function() {
+      if (unlockedReasons.size === 3) {
+        playHarpArpeggio([523.25, 659.25, 783.99, 1046.5, 1318.51]);
+        goToStep('4');
+      }
+    });
+
+    // Step 4: The Proposal YES / NO
+    document.getElementById('btn-yes').addEventListener('click', () => {
+      startMelodyIfPending();
+      playGrandRomanticFanfare();
+      goToStep('5');
+    });
+
+    const btnNo = document.getElementById('btn-no');
+    const noPhrases = [
+      "Are you sure? 🥺",
+      "Think again! 😉",
+      "Give it another thought 💕",
+      "Almost got me! 🙈",
+      "Nice try! 💍",
+      "Destiny says YES ✨",
+      "Only YES allowed! 🥰"
+    ];
+
+    function dodgeButton() {
+      noHoverCount++;
+      const phrase = noPhrases[(noHoverCount - 1) % noPhrases.length];
+      document.getElementById('no-text').textContent = phrase;
+
+      const maxOffset = 110;
+      const randomX = (Math.random() - 0.5) * maxOffset * 2;
+      const randomY = (Math.random() - 0.5) * maxOffset * 1.5;
+      const scale = Math.max(0.75, 1 - noHoverCount * 0.03);
+
+      btnNo.style.transform = `translate(${randomX}px, ${randomY}px) scale(${scale})`;
+      btnNo.style.transition = "transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    }
+
+    btnNo.addEventListener('mouseenter', dodgeButton);
+    btnNo.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      dodgeButton();
+    });
+
+    // Step 5: Fireworks Celebration Finale
+    function triggerSuperCelebration() {
+      confetti({
+        particleCount: 150,
+        spread: 120,
+        origin: { y: 0.5 },
+        colors: ['#FDE68A', '#FB7185', '#F43F5E', '#8B5CF6', '#FFFFFF', '#DB2777']
+      });
+
+      const duration = 5 * 1000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 6,
+          angle: 60,
+          spread: 60,
+          origin: { x: 0 },
+          colors: ['#FDE68A', '#FB7185', '#F59E0B']
+        });
+        confetti({
+          particleCount: 6,
+          angle: 120,
+          spread: 60,
+          origin: { x: 1 },
+          colors: ['#8B5CF6', '#FB7185', '#FDE68A']
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    }
+
+    function burstConfetti(opts) {
+      if (window.confetti) confetti(opts);
+    }
+
+    function takeScreenshotHelp() {
+      const hint = document.getElementById('save-hint');
+      hint.classList.toggle('hidden');
+    }
+
+    /* =============================================================
+       Famous Romantic Melody (Canon in D / Can't Help Falling in Love)
+       Synthesized with Web Audio API (Celesta & Warm Harp Tones)
+       Initial State: "Melody: On"
+    ============================================================= */
+    let audioCtx = null;
+    let isMelodyOn = true;
+    let melodyTimer = null;
+    let melodyNoteIndex = 0;
+
+    // Classic romantic progressions & lyrical melody
+    const canonMelody = [
+      // Canon in D / Romantic cadence (F#4, E4, D4, C#4, B3, A3, B3, C#4 + arpeggiated harmonies)
+      { note: 369.99, dur: 1.2 }, // F#4
+      { note: 329.63, dur: 1.2 }, // E4
+      { note: 293.66, dur: 1.2 }, // D4
+      { note: 277.18, dur: 1.2 }, // C#4
+      { note: 246.94, dur: 1.2 }, // B3
+      { note: 220.00, dur: 1.2 }, // A3
+      { note: 246.94, dur: 1.2 }, // B3
+      { note: 277.18, dur: 1.2 }, // C#4
+      // High sweet celesta response
+      { note: 587.33, dur: 0.8 }, // D5
+      { note: 554.37, dur: 0.8 }, // C#5
+      { note: 493.88, dur: 0.8 }, // B4
+      { note: 440.00, dur: 1.4 }  // A4
+    ];
+
+    function ensureAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playTone(freq, duration = 1.0, type = 'sine', volume = 0.08) {
+      if (!audioCtx || !isMelodyOn) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        gain.gain.setValueAtTime(volume, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch(e) {}
+    }
+
+    function playHarpArpeggio(notes) {
+      ensureAudioContext();
+      notes.forEach((freq, idx) => {
+        setTimeout(() => {
+          playTone(freq, 1.4, 'triangle', 0.07);
+        }, idx * 90);
+      });
+    }
+
+    function playGrandRomanticFanfare() {
+      ensureAudioContext();
+      const fanfare = [523.25, 659.25, 783.99, 1046.5, 1318.51, 1567.98];
+      fanfare.forEach((n, i) => {
+        setTimeout(() => playTone(n, 2.2, 'triangle', 0.12), i * 110);
+      });
+    }
+
+    function runMelodyLoop() {
+      if (!isMelodyOn) return;
+      ensureAudioContext();
+      const current = canonMelody[melodyNoteIndex % canonMelody.length];
+      playTone(current.note, current.dur * 1.5, 'sine', 0.06);
+      
+      // Add subtle harmony bass note every 2 notes
+      if (melodyNoteIndex % 2 === 0) {
+        playTone(current.note / 2, 2.0, 'triangle', 0.04);
+      }
+
+      melodyNoteIndex++;
+      melodyTimer = setTimeout(runMelodyLoop, (current.dur * 1000) * 0.85);
+    }
+
+    function startMelodyIfPending() {
+      ensureAudioContext();
+      if (isMelodyOn && !melodyTimer) {
+        runMelodyLoop();
+      }
+    }
+
+    // Toggle button handler
+    const musicToggleBtn = document.getElementById('music-toggle');
+    const musicText = document.getElementById('music-text');
+    const soundwaves = document.getElementById('soundwave-container');
+    const musicMutedIcon = document.getElementById('music-muted-icon');
+
+    musicToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      ensureAudioContext();
+      isMelodyOn = !isMelodyOn;
+      if (isMelodyOn) {
+        musicText.textContent = "Melody: On";
+        soundwaves.classList.remove('hidden');
+        musicMutedIcon.classList.add('hidden');
+        startMelodyIfPending();
+      } else {
+        musicText.textContent = "Melody: Off";
+        soundwaves.classList.add('hidden');
+        musicMutedIcon.classList.remove('hidden');
+        clearTimeout(melodyTimer);
+        melodyTimer = null;
+      }
+    });
+
+    // First user gesture anywhere starts background romance track smoothly
+    window.addEventListener('click', () => {
+      startMelodyIfPending();
+    }, { once: true });
+    window.addEventListener('touchstart', () => {
+      startMelodyIfPending();
+    }, { once: true });
+
+    /* =============================================================
+       Floating Heart Sprites dynamically spawned into the background
+    ============================================================= */
+    const heartsContainer = document.getElementById('hearts-container');
+    const heartSymbols = ['💖', '💕', '🌸', '✨', '🌹', '💍'];
+    
+    function createAmbientHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+      
+      const leftPos = Math.random() * 96; // 0 to 96vw
+      const animDuration = Math.random() * 10 + 12; // 12-22s
+      const size = Math.random() * 16 + 14; // 14-30px
+      const delay = Math.random() * 4;
+
+      heart.style.left = `${leftPos}vw`;
+      heart.style.fontSize = `${size}px`;
+      heart.style.animationDuration = `${animDuration}s`;
+      heart.style.animationDelay = `${delay}s`;
+
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, (animDuration + delay) * 1000);
+    }
+
+    // Spawn heart sprites periodically
+    for (let i = 0; i < 8; i++) {
+      setTimeout(createAmbientHeart, i * 1200);
+    }
+    setInterval(createAmbientHeart, 2200);
+
+    /* =============================================================
+       Falling Rose Petals Simulation (Smooth & Lightweight Canvas)
+    ============================================================= */
+    const canvas = document.getElementById('petal-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Petal {
+      constructor() {
+        this.reset(true);
+      }
+      reset(init = false) {
+        this.x = Math.random() * width;
+        this.y = init ? Math.random() * height : -30;
+        this.size = Math.random() * 12 + 10;
+        this.speedY = Math.random() * 1.1 + 0.7;
+        this.speedX = (Math.random() - 0.5) * 0.7;
+        this.rotation = Math.random() * 360;
+        this.rotSpeed = (Math.random() - 0.5) * 1.5;
+        this.colorType = Math.floor(Math.random() * 3);
+        this.oscillationSpeed = Math.random() * 0.02 + 0.01;
+        this.oscillationOffset = Math.random() * Math.PI * 2;
+      }
+      update() {
+        this.y += this.speedY;
+        this.oscillationOffset += this.oscillationSpeed;
+        this.x += this.speedX + Math.sin(this.oscillationOffset) * 0.7;
+        this.rotation += this.rotSpeed;
+        if (this.y > height + 30 || this.x < -30 || this.x > width + 30) {
+          this.reset();
+        }
+      }
+      draw(ctx) {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.rotation * Math.PI) / 180);
+        ctx.beginPath();
+        ctx.moveTo(0, -this.size / 2);
+        ctx.bezierCurveTo(this.size / 2, -this.size / 2, this.size / 2, this.size / 2, 0, this.size);
+        ctx.bezierCurveTo(-this.size / 2, this.size / 2, -this.size / 2, -this.size / 2, 0, -this.size / 2);
+
+        if (this.colorType === 0) {
+          ctx.fillStyle = 'rgba(255, 241, 242, 0.65)';
+        } else if (this.colorType === 1) {
+          ctx.fillStyle = 'rgba(251, 113, 133, 0.55)';
+        } else {
+          ctx.fillStyle = 'rgba(253, 230, 138, 0.45)';
+        }
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    const petals = Array.from({ length: 30 }, () => new Petal());
+
+    function animatePetals() {
+      ctx.clearRect(0, 0, width, height);
+      petals.forEach(p => {
+        p.update();
+        p.draw(ctx);
+      });
+      requestAnimationFrame(animatePetals);
+    }
+    animatePetals();
+  </script>
+</body></html>
